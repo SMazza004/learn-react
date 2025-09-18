@@ -1,5 +1,5 @@
 import { Doughnut } from "react-chartjs-2";
-import { RequestData, EndpointData } from "../../types/types";
+import { RequestData, EndpointData, ENDPOINT_METHODS } from "../../types/types";
 import { DashboardFilter } from "../../store/slice/dashboardSlice";
 
 type MethodsChartProps = {
@@ -27,8 +27,8 @@ export default function MethodsChart({ requestData }: MethodsChartProps) {
     return calculated;
   };
 
-  const labels: string[] = ["GET", "POST", "PATCH", "PUT", "DELETE"];
-  const data: number[] = calculateData(requestData, labels);
+  const labels: string[] = ENDPOINT_METHODS;
+  const data: number[] = calculateData(requestData, ENDPOINT_METHODS);
 
   return (
     <div className="w-50">
