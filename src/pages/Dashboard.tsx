@@ -21,7 +21,7 @@ import {
   BarElement,
   RadialLinearScale,
 } from "chart.js";
-import { RequestData } from "../types/types";
+import { ENDPOINT_METHODS, RequestData } from "../types/types";
 import MethodsChart from "../components/chart/MethodsChart";
 import { useEffect, useState } from "react";
 import { RootState } from "../store/store";
@@ -40,6 +40,7 @@ import {
   useFindAllQuery,
   useFindByEndpointQuery,
 } from "../store/slice/requestApi";
+import { SelectInput } from "../components/input/Input";
 
 ChartJS.register(
   BarElement,
@@ -103,45 +104,35 @@ export default function Dashboard() {
           <Card className="mb-4" style={{ boxShadow: "0 0 10px gray" }}>
             <CardHeader>Filters</CardHeader>
             <CardBody>
-              <Row className="w-100 mb-3 align-items-baseline">
-                <Col md={5} className="mb-3">
-                  <label htmlFor="methodSelect" className="w-100">
-                    Method
-                    <select
-                      id="methodSelect"
-                      value={filter.method}
-                      onChange={(e) =>
-                        dispatch(setFilterMethod(e.target.value))
-                      }
-                      className="form-select"
-                    >
-                      <option value=""></option>
-                      <option value="GET">GET</option>
-                      <option value="POST">POST</option>
-                      <option value="PUT">PUT</option>
-                      <option value="PATCH">PATCH</option>
-                      <option value="DELETE">DELETE</option>
-                    </select>
-                  </label>
+              <Row className="w-100 mb-3 align-items-end">
+                <Col md={5}>
+                  <SelectInput
+                    label="Method"
+                    value={filter.method}
+                    onChange={(e) => dispatch(setFilterMethod(e.target.value))}
+                    error={false}
+                  >
+                    <option value=""></option>
+                    {ENDPOINT_METHODS.map((e) => (
+                      <option value={e}>{e}</option>
+                    ))}
+                  </SelectInput>
                 </Col>
 
-                <Col md={5} className="mb-3">
-                  <label htmlFor="endpointSelect" className="w-100">
-                    Endpoint
-                    <select
-                      id="endpointSelect"
-                      value={filter.endpoint}
-                      onChange={(e) =>
-                        dispatch(setFilterEndpoint(e.target.value))
-                      }
-                      className="form-select"
-                    >
-                      <option value=""></option>
-                      {endpoints.map((e) => (
-                        <option value={e}>{e}</option>
-                      ))}
-                    </select>
-                  </label>
+                <Col md={5}>
+                  <SelectInput
+                    label="Endpoint"
+                    value={filter.endpoint}
+                    onChange={(e) =>
+                      dispatch(setFilterEndpoint(e.target.value))
+                    }
+                    error={false}
+                  >
+                    <option value=""></option>
+                    {endpoints.map((e) => (
+                      <option value={e}>{e}</option>
+                    ))}
+                  </SelectInput>
                 </Col>
 
                 <Col md={2} className="mb-3">

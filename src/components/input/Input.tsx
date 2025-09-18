@@ -44,7 +44,7 @@ type SelectInputProps = {
   onChange: (e: ChangeEvent<HTMLSelectElement>) => void;
   error: boolean;
   className?: string;
-  children?: JSX.Element[];
+  children?: any[];
 };
 
 function generateRandomId(prefix: string): string {
@@ -198,9 +198,14 @@ export function SelectInput({
   const id = generateRandomId(`$selectInput`);
 
   return (
-    <FormGroup className={className}>
+    <FormGroup className="mb-3">
       <FormLabel htmlFor={id}>{label}</FormLabel>
-      <FormSelect id={id} value={value} onChange={onChange}>
+      <FormSelect
+        id={id}
+        value={value}
+        onChange={onChange}
+        className={className}
+      >
         {children}
       </FormSelect>
       {error && <InputErrorMessage>{label} cannot be empty</InputErrorMessage>}

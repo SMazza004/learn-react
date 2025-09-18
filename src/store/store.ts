@@ -5,6 +5,7 @@ import { loginSlice } from "./slice/loginSlice";
 
 import { requestApi } from "./slice/requestApi";
 import { newDataSlice } from "./slice/newDataSlice";
+import { signUpSlice } from "./slice/signUpSlice";
 
 export const store = configureStore({
   reducer: {
@@ -13,6 +14,7 @@ export const store = configureStore({
     requestApi: requestApi.reducer,
     loginSlice: loginSlice.reducer,
     newDataSlice: newDataSlice.reducer,
+    signUpSlice: signUpSlice.reducer,
   },
   middleware: (getDefaultMiddleware) => {
     return getDefaultMiddleware({ serializableCheck: false }).concat(
