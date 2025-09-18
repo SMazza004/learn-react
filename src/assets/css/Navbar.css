@@ -1,0 +1,15 @@
+:root {
+  --blue: #190e4f;
+  --blue-active: #2b188c;
+  --blue-hover: #211268;
+  --white: #f2f2f2;
+  --default-padding: 1.2em;
+}
+
+.navbar-wrapper {
+  background-color: var(--blue);
+}
+
+.navbar-text {
+  color: var(--white) !important;
+}

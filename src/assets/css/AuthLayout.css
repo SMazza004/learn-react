@@ -1,0 +1,29 @@
+:root {
+  --blue: #190e4f;
+  --blue-active: #2b188c;
+  --blue-hover: #211268;
+  --white: #f2f2f2;
+  --default-padding: 1.2em;
+}
+
+.bg-blue {
+  background-color: var(--blue) !important;
+}
+
+.text-white {
+  color: var(--white) !important;
+}
+
+.auth {
+  width: 100vw;
+  height: 100vh;
+
+  background-image: url("../images/dan-freeman-wAn4RfmXtxU-unsplash.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
